@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Marquepages;
+use DateTime;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\ORM\EntityManagerInterface;
+
+#[Route("/marquepages", requirements: ["_locale" => "en|es|fr"], name: "app_marque_pages")]
+class MarquePageController extends AbstractController
+{
+        // Définition de la route 
+        #[Route('/ajouter')]
+        public function addMarquePages(EntityManagerInterface $entityManager): Response
+        {
+            // Instanciation de la classe MarquePage
+            $marquePage = new MarquePages();
+            // Attribue les valeurs de l'objet en BDD
+            $marquePage->setDateCreation(new DateTime('now'));
+            $marquePage->setCommentaire("Test com");
+            $marquePage->setUrl("Test.url");
+
+            // Sauvegarde les livres dans la BDD
+            $marquePage = $entityManager->persist($marquePage);
+            $entityManager->flush();
+
+            return new Response("<h1>Marque Page ajouté</h1><a href='/'>Retourner</a>");
+        }
+
+        // Définition de la route 
+        #[Route('/consulter/{id}', requirements: ["id" => "\d+"])]
+        public function consulterDetails(int $id, EntityManagerInterface $entityManager): Response
+        {
+            // Cherche les marques pages en bdd selon l'ID de l'article
+            $details = $entityManager->getRepository(MarquePages::class)->find($id);
+
+            if(!$details) {
+                throw $this->createNotFoundException(
+                    "Aucun marque pages avec l'id ". $id
+                );
+            }
+
+            // Ajoute les valeurs dans la Vue
+            return $this->render('marque_pages/details.html.twig', [
+                'details' => $details,
+            ]);
+        }
+}
