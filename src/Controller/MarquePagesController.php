@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Marquepages;
-// use DateTime;
+use DateTime;
 
 
 class MarquePagesController extends AbstractController
@@ -22,6 +22,23 @@ class MarquePagesController extends AbstractController
     //     ]);
     // }
 
+    // Définition de la route 
+    #[Route('/ajouter')]
+    public function addMarquePages(EntityManagerInterface $entityManager): Response
+    {
+        // Instanciation de la classe MarquePage
+        $marquePage = new MarquePages();
+        // Attribue les valeurs de l'objet en BDD
+        $marquePage->setDateCreation(new DateTime('now'));
+        $marquePage->setCommentaire("Test com");
+        $marquePage->setUrl("Test.url");
+
+        // Sauvegarde les livres dans la BDD
+        $marquePage = $entityManager->persist($marquePage);
+        $entityManager->flush();
+
+        return new Response("<h1>Marque Page ajouté</h1><a href='/'>Retourner</a>");
+    }
     // Définition de la route 
     #[Route('/')]
     public function getAll(EntityManagerInterface $entityManager): Response
@@ -53,9 +70,11 @@ class MarquePagesController extends AbstractController
             );
         }
 
+        $motcles = $details->getIdmotcles();
         // Ajoute les valeurs dans la Vue
         return $this->render('marque_pages/details.html.twig', [
             'details' => $details,
+            'mc' => $motcles,
         ]);
     }
 }

@@ -1,29 +1,48 @@
-    <style>
-    table, th, td {
-  border: 1px solid;
-}
-    </style>
+<style>
+	table,
+	th,
+	td {
+		border: 1px solid;
+	}
+</style>
 
-<h1>Les détails du marque-page : {{ details.id }}</h1>
+<h1>Les détails du marque-page :
+	{{ details.id }}</h1>
 
 <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">URL</th>
-      <th scope="col">Date Création</th>
-      <th scope="col">Commentaire</th>
+	<thead>
+		<tr>
+			<th scope="col">Libellé</th>
+			<th scope="col">Valeurs</th>
+			{# <th scope="col">Date Création</th>
+															      <th scope="col">Commentaire</th> #}
 
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <td> {{ details.id }}</td>
-        <td>{{ details.url }}</td>
-       <td>{{ details.getDateCreation()|date('Y-m-d H:i:s') }}</td>
-        <td>{{ details.commentaire }}</td>
-      </tr>
-  </tbody>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Id</td>
+			<td>{{ details.id }}</td>
+		</tr>
+		<tr>
+			<td>Url</td>
+			<td>{{ details.url }}</td>
+		</tr>
+		<tr>
+			<td>Date de création</td>
+			<td>{{ details.getDateCreation()|date('Y-m-d H:i:s') }}</td>
+		</tr>
+		<tr>
+			<td>Commentaire</td>
+			<td>{{ details.commentaire }}</td>
+		</tr>
+    <tr>
+			<td>Mots-clés</td>
+      {% for i in mc %}
+			  <td>{{ i.getMc() }}</td>
+      {% endfor %}
+		</tr>
+	</tbody>
 </table>
 
 <a href="/">Retourner !</a>
