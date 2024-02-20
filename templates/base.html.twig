@@ -26,15 +26,15 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 						<div class="navbar-nav">
-							{% block titrenavbar %}
-								<h2>Liste des marques pages</h2>
-							{% endblock %}
-						</div>
-						<div class="navbar-nav">
-							<a class="navbar-brand" href="/">Marque pages</a>
+							<a class="navbar-brand" href="/marquepages">Marque pages</a>
 						</div>
 						<div class="navbar-nav">
 							<a class="navbar-brand" href="/livres">Livres</a>
+						</div>
+						<div class="navbar-nav">
+							{% block titrenavbar %}
+								<h2>Accueil</h2>
+							{% endblock %}
 						</div>
 					</div>
 				</nav>
@@ -44,7 +44,7 @@
 		<footer class="footer mt-auto py-3 bg-light fixed-bottom">
 			<div class="container">
 				<p>Réalisé par Vivian en 2024 -
-					{% block footer %}Liste des Marque pages
+					{% block footer %}Accueil
 					{% endblock %}
 				</p>
 			</p>

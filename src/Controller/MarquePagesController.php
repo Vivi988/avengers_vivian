@@ -12,15 +12,15 @@ use DateTime;
 
 class MarquePagesController extends AbstractController
 {
-    // #[Route('/marque/pages', name: 'app_marque_pages')]
-    // public function index(): Response
-    // {
+    #[Route('/', name: 'app_marque_pages')]
+    public function index(): Response
+    {
         
 
-    //     return $this->render('marque_pages/index.html.twig', [
-    //         'controller_name' => 'MarquePagesController',
-    //     ]);
-    // }
+        return $this->render('marque_pages/index.html.twig', [
+            'Accueil' => 'Accueil',
+        ]);
+    }
 
     // Définition de la route 
     // #[Route('/ajouter')]
@@ -40,7 +40,7 @@ class MarquePagesController extends AbstractController
     //     return new Response("<h1>Marque Page ajouté</h1><a href='/'>Retourner</a>");
     // }
     // Définition de la route 
-    #[Route('/')]
+    #[Route('/marquepages')]
     public function getAll(EntityManagerInterface $entityManager): Response
     {
         // Récupère les livres dans la BDD
@@ -58,7 +58,7 @@ class MarquePagesController extends AbstractController
     }
 
     // Définition de la route 
-    #[Route('/consulter/{id}', requirements: ["id" => "\d+"])]
+    #[Route('/consulter/mp/{id}', requirements: ["id" => "\d+"])]
     public function consulterDetails(int $id, EntityManagerInterface $entityManager): Response
     {
         // Cherche les marques pages en bdd selon l'ID de l'article

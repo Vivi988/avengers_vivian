@@ -28,7 +28,7 @@ class LivresController extends AbstractController
     }
 
     // Définition de la route 
-    #[Route('/consulter/{id}', requirements: ["id" => "\d+"])]
+    #[Route('/consulter/livre/{id}', requirements: ["id" => "\d+"])]
     public function consulterDetails(int $id, EntityManagerInterface $entityManager): Response
     {
         // Cherche les marques pages en bdd selon l'ID de l'article
