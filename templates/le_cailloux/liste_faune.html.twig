@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Faune{% endblock %}
+{% block titrenavbar %}
+	<h1>Faune ou flore ?</h1>
+{% endblock %}
+{% block body %}
+<h1>Faune</h1>
+<div>
+    {% for item in itemsfaune %}
+    <div>
+        <img src="{{ item.url }}" alt="image">
+        <p>{{ item.description }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block footer %}Liste Faune
+{% endblock %}

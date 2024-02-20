@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des livres
+{% block title %}Faune ou Flore ?
 {% endblock %}
 {% block titrenavbar %}
-	<h1>Liste complète des livres</h1>
+	<h1>Faune ou flore ?</h1>
 {% endblock %}
 {% block body %}
 	<style>
@@ -14,31 +14,41 @@
 		}
 	</style>
 
-	<div class="container">
+	<div
+		class="container">
 
-		<table class="table">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">URL</th>
-					<th scope="col">Description</th>
-					<th scope="col">Catégorie</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for i in listeducailloux %}
-					<tr>
-						<td>{{ i.getUrl() }}</td>
-						<td>{{ i.getDescription() }}</td>
-						<td>
-							{# <a href="/consulter/{{ l.getId() }}">Détails</a> #}
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+		{# <table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">URL</th>
+									<th scope="col">Description</th>
+									<th scope="col">Catégorie</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for i in listeducailloux %}
+									<tr>
+										<td>{{ i.getUrl() }}</td>
+										<td>{{ i.getDescription() }}</td>
+										<td>
+				                            {{ i.getCategorie() }}
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table> #}
+
+		<button
+			type="button" class="btn btn-primary" href="/lecailloux/faune">
+			{# <a href="/lecailloux/faune">Faune</a> #}
+			faune
+		</button>
+		<button type="button" class="btn btn-success">
+			<a href="/lecailloux/flore">Flore</a>
+		</button>
 	</div>
 
 
 {% endblock %}
-{% block footer %}Liste des Livres
+{% block footer %}La Faune ou la Flore ?
 {% endblock %}

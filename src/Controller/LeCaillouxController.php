@@ -23,9 +23,9 @@ class LeCaillouxController extends AbstractController
     {
         // Récupère les données dans la BDD
         $listeducailloux = $entityManager->getRepository(LeCailloux::class)->findAll();
-        
+
         // Gestion d'erreur
-        if(!$listeducailloux) {
+        if (!$listeducailloux) {
             throw $this->createNotFoundException("Aucuns cliché du cailloux n'est enregistré !");
         }
 
@@ -35,4 +35,21 @@ class LeCaillouxController extends AbstractController
         ]);
     }
 
+    #[Route('/lecailloux/faune', name: 'app_le_cailloux_faune')]
+    public function faune(EntityManagerInterface $entityManager): Response
+    {
+        $fauneItems = $entityManager->getRepository(LeCailloux::class)->findBy(['categorie' => 'Faune']);
+        return $this->render('le_cailloux/liste_faune.html.twig', [
+            'itemsfaune' => $fauneItems,
+        ]);
+    }
+
+    #[Route('/lecailloux/flore', name: 'app_le_cailloux_flore')]
+    public function flore(EntityManagerInterface $entityManager): Response
+    {
+        $floreItems = $entityManager->getRepository(LeCailloux::class)->findBy(['categorie' => 'Flore']);
+        return $this->render('le_cailloux/liste_flore.html.twig', [
+            'itemsflore' => $floreItems,
+        ]);
+    }
 }
