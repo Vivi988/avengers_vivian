@@ -1,48 +1,58 @@
-<style>
-	table,
-	th,
-	td {
-		border: 1px solid;
-	}
-</style>
+{% extends 'base.html.twig' %}
 
-<h1>Les détails du marque-page :
-	{{ details.id }}</h1>
+{% block title %}Détail du
+	{{ details.id }}
+{% endblock %}
+{% block titrenavbar %}
+	<h1>Détail du marque-pages n°
+		{{ details.id }}
+	</h1>
+{% endblock %}
+{% block body %}
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid;
+		}
+	</style>
+	<div class="container">
 
-<table class="table">
-	<thead>
-		<tr>
-			<th scope="col">Libellé</th>
-			<th scope="col">Valeurs</th>
-			{# <th scope="col">Date Création</th>
-															      <th scope="col">Commentaire</th> #}
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Libellé</th>
+					<th scope="col">Valeurs</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Id</td>
+					<td>{{ details.id }}</td>
+				</tr>
+				<tr>
+					<td>Url</td>
+					<td>{{ details.url }}</td>
+				</tr>
+				<tr>
+					<td>Date de création</td>
+					<td>{{ details.getDateCreation()|date('Y-m-d H:i:s') }}</td>
+				</tr>
+				<tr>
+					<td>Commentaire</td>
+					<td>{{ details.commentaire }}</td>
+				</tr>
+				<tr>
+					<td>Mots-clés</td>
+					{% for i in mc %}
+						<td>{{ i.getMc() }}</td>
+					{% endfor %}
+				</tr>
+			</tbody>
+		</table>
+		<a href="/">Retourner</a>
+	</div>
 
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Id</td>
-			<td>{{ details.id }}</td>
-		</tr>
-		<tr>
-			<td>Url</td>
-			<td>{{ details.url }}</td>
-		</tr>
-		<tr>
-			<td>Date de création</td>
-			<td>{{ details.getDateCreation()|date('Y-m-d H:i:s') }}</td>
-		</tr>
-		<tr>
-			<td>Commentaire</td>
-			<td>{{ details.commentaire }}</td>
-		</tr>
-    <tr>
-			<td>Mots-clés</td>
-      {% for i in mc %}
-			  <td>{{ i.getMc() }}</td>
-      {% endfor %}
-		</tr>
-	</tbody>
-</table>
-
-<a href="/">Retourner !</a>
+{% endblock %}
+{% block footer %}TEST DETAILS
+{% endblock %}

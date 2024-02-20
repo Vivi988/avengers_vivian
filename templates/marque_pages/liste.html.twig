@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des marque pages
+{% endblock %}
+{% block titrenavbar %}
+	<h1>Liste complète des marque-pages</h1>
+{% endblock %}
+{% block body %}
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid;
+		}
+	</style>
+
+	<div class="container">
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">URL</th>
+					<th scope="col">Commentaire</th>
+					<th scope="col">Détails</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for mPage in marquePages %}
+					<tr>
+						<td>{{ mPage.getUrl() }}</td>
+						<td>{{ mPage.getCommentaire() }}</td>
+						<td>
+							<a href="/consulter/{{ mPage.getId() }}">Détails</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		{# <a href="/ajouter">Ajouter un marque pages
+		</a> #}
+	</div>
+
+
+{% endblock %}

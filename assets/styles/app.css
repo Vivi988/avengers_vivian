@@ -1,3 +1,20 @@
 body {
-    background-color: skyblue;
+    background-color: rgba(198, 216, 225, 0.693);
 }
+
+body {
+    /* Add top padding to account for fixed navbar height */
+    padding-top: 70px; /* Adjust based on your navbar's actual height */
+    
+    /* Add bottom padding to account for fixed footer height */
+    padding-bottom: 70px; /* Adjust based on your footer's actual height */
+  }
+  
+  .fixed-top {
+    z-index: 1030; /* Ensure navbar is above other content */
+  }
+  
+  .footer {
+    z-index: 1030; /* Ensure footer is above other content */
+  }
+  
