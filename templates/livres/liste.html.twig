@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des livres
+{% endblock %}
+{% block titrenavbar %}
+	<h1>Liste complète des livres</h1>
+{% endblock %}
+{% block body %}
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid;
+		}
+	</style>
+
+	<div class="container">
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Titre</th>
+					<th scope="col">Auteur</th>
+					<th scope="col">Détails</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for l in livres %}
+					<tr>
+						<td>{{ l.getTitre() }}</td>
+						<td>{{ l.getAuteur() }}</td>
+						<td>
+							<a href="/consulter/{{ l.getId() }}">Détails</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+
+{% endblock %}

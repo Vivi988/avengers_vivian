@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du
+	{{ details.id }}
+{% endblock %}
+{% block titrenavbar %}
+	<h1>Détail du livre de 
+		{{ details.getAuteur() }}
+	</h1>
+{% endblock %}
+{% block body %}
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid;
+		}
+	</style>
+	<div class="container">
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Libellé</th>
+					<th scope="col">Valeurs</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Id</td>
+					<td>{{ details.id }}</td>
+				</tr>
+				<tr>
+					<td>Titre</td>
+					<td>{{ details.getTitre() }}</td>
+				</tr>
+				<tr>
+					<td>Date de création</td>
+					<td>{{ details.getAnnee()|date('Y-m-d H:i:s') }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/livres">Retourner</a>
+	</div>
+
+{% endblock %}
+{% block footer %}TEST DETAILS
+{% endblock %}
