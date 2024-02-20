@@ -4,7 +4,7 @@
 	{{ details.id }}
 {% endblock %}
 {% block titrenavbar %}
-	<h1>Détail du livre de 
+	<h1>Détail du livre de
 		{{ details.getAuteur() }}
 	</h1>
 {% endblock %}
@@ -40,9 +40,9 @@
 				</tr>
 			</tbody>
 		</table>
-		<a href="/livres">Retourner</a>
+		<a href="/livres">Retourner à la liste des livres</a>
 	</div>
 
 {% endblock %}
-{% block footer %}TEST DETAILS
+{% block footer %}Détails du livre : "{{ details.getTitre()}}"
 {% endblock %}
