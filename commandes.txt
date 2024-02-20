@@ -1,0 +1,26 @@
+mkdir AVdJ
+cd AVdJ
+git init
+ls -la
+symfony check:requirements
+symfony new avengers_vivian --webapp --version=6.4
+git status
+git add .
+git commit -m"Creation projet Symfony avengers_vivian"
+git status
+git lola
+symfony server:start
+php bin/console make:controller MarquePages
+php bin/console doctrine:database:create
+php bin/console make:entity
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+php bin/console make:controller Livres
+php bin/console make:entity
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+php bin/console make:controller LeCailloux
+php bin/console make:entity
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+
