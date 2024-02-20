@@ -1,19 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Faune{% endblock %}
+{% block title %}Faune
+{% endblock %}
 {% block titrenavbar %}
 	<h1>Faune ou flore ?</h1>
 {% endblock %}
 {% block body %}
-<h1>Flore</h1>
-<div>
-    {% for item in itemsflore %}
-    <div>
-        <img src="{{ item.url }}" alt="image">
-        <p>{{ item.description }}</p>
-    </div>
-    {% endfor %}
-</div>
+	<h1>Flore</h1>
+	<div>
+		{% for item in itemsflore %}
+			<div>
+				<img src="{{ item.url }}" alt="image">
+				<p>{{ item.description }}</p>
+			</div>
+		{% endfor %}
+	</div>
+	<a href="/lecailloux" class="btn btn-warning">Revenir à la page Le Cailloux</a>
 {% endblock %}
-{% block footer %}Liste FLore 
+{% block footer %}Liste FLore
 {% endblock %}

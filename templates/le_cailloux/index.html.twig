@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Faune ou Flore ?
+{% block title %}Flore ou Faune ? 
 {% endblock %}
 {% block titrenavbar %}
 	<h1>Faune ou flore ?</h1>
@@ -18,34 +18,29 @@
 		class="container">
 
 		{# <table class="table">
-							<thead class="thead-dark">
-								<tr>
-									<th scope="col">URL</th>
-									<th scope="col">Description</th>
-									<th scope="col">Catégorie</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for i in listeducailloux %}
-									<tr>
-										<td>{{ i.getUrl() }}</td>
-										<td>{{ i.getDescription() }}</td>
-										<td>
-				                            {{ i.getCategorie() }}
-										</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table> #}
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">URL</th>
+							<th scope="col">Description</th>
+							<th scope="col">Catégorie</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for i in listeducailloux %}
+							<tr>
+								<td>{{ i.getUrl() }}</td>
+								<td>{{ i.getDescription() }}</td>
+								<td>
+		                            {{ i.getCategorie() }}
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table> #}
 
-		<button
-			type="button" class="btn btn-primary" href="/lecailloux/faune">
-			{# <a href="/lecailloux/faune">Faune</a> #}
-			faune
-		</button>
-		<button type="button" class="btn btn-success">
-			<a href="/lecailloux/flore">Flore</a>
-		</button>
+
+			<a href="/lecailloux/faune" class="btn btn-danger">Faune</a>
+			<a href="/lecailloux/flore" class="btn btn-success">Flore</a>
 	</div>
 
 
