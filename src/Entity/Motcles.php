@@ -16,7 +16,7 @@ class Motcles
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: marquepages::class, inversedBy: 'idmotcles')]
+    #[ORM\ManyToMany(targetEntity: Marquepages::class, inversedBy: 'idmotcles')]
     private Collection $marquepages;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
