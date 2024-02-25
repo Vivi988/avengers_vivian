@@ -44,9 +44,11 @@
 				</tr>
 				<tr>
 					<td>Mots-clés</td>
-					{% for i in mc %}
-						<td>{{ i.getMc() }}</td>
-					{% endfor %}
+					<td>
+						{% for i in mc %}
+							{{ i.getMc() }} <br>
+						{% endfor %}
+					</td>
 				</tr>
 			</tbody>
 		</table>

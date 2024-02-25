@@ -5,8 +5,9 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Motcles;
+use App\Entity\Marquepages;
 
-class Ajoutmotcles extends Fixture
+class MotclesFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
