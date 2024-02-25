@@ -27,23 +27,6 @@ class LivresController extends AbstractController
         ]);
     }
 
-    #[Route('/ajouterlivre')]
-    public function addLivre(EntityManagerInterface $entityManager): Response
-    {
-        // Instanciation de la classe Livre
-        $livre = new Livre();
-        // Attribue les valeurs de l'objet en BDD
-        $livre->setAuteur("tata " . mt_rand(1,35));
-        $livre->setAnnee(new \DateTime(mt_rand(1975, 2020)));
-        $livre->setTitre("L'art et la mane hier");
-
-        // Sauvegarde les livres dans la BDD
-        $entityManager->persist($livre);
-        $entityManager->flush();
-
-        return new Response("<h1>Livre ajouté</h1><a href='/livres'>Retourner</a>");
-    }
-
     // Définition de la route 
     #[Route('/consulter/livre/{id}', requirements: ["id" => "\d+"])]
     public function consulterDetails(int $id, EntityManagerInterface $entityManager): Response

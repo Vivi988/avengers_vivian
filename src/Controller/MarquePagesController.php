@@ -23,23 +23,6 @@ class MarquePagesController extends AbstractController
     }
 
     // Définition de la route 
-    #[Route('/ajouter')]
-    public function addMarquePages(EntityManagerInterface $entityManager): Response
-    {
-        // Instanciation de la classe MarquePage
-        $marquePage = new MarquePages();
-        // Attribue les valeurs de l'objet en BDD
-        $marquePage->setDateCreation(new DateTime('now'));
-        $marquePage->setCommentaire("Test com 1");
-        $marquePage->setUrl("Test.url");
-
-        // Sauvegarde les livres dans la BDD
-        $entityManager->persist($marquePage);
-        $entityManager->flush();
-
-        return new Response("<h1>Marque Page ajouté</h1><a href='/marquepages'>Retourner</a>");
-    }
-    // Définition de la route 
     #[Route('/marquepages')]
     public function getAll(EntityManagerInterface $entityManager): Response
     {
