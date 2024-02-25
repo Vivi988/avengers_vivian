@@ -24,9 +24,9 @@ class MotclesFixtures extends Fixture
         // Crée et persiste des Marquepages avec des mots-clés associés aléatoirement
         for ($j = 0; $j < 10; $j++) { // Adaptez ce nombre pour créer plus ou moins de Marquepages
             $marquepage = new Marquepages();
-            $marquepage->setUrl('http://example.com/page' . $j);
+            $marquepage->setUrl('urltest' . $j);
             $marquepage->setDatecreation(new \DateTime(mt_rand(2000, 2020)));
-            $marquepage->setCommentaire('Ceci est un exemple de marque-page ' . $j);
+            $marquepage->setCommentaire('marque-page ' . $j);
 
             // Associe aléatoirement entre 2 et 5 Motcles à ce Marquepage
             $randomMotcles = (array)array_rand($motclesList, rand(2, 5));
