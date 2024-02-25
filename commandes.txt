@@ -29,3 +29,4 @@ php bin/console doctrine:fixtures:load --append
 php bin/console make:fixtures
 php bin/console doctrine:fixtures:load --append
 php bin/console make:fixtures
+php bin/console doctrine:fixtures:load --append
