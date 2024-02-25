@@ -15,7 +15,8 @@
 	</style>
 
 	<div class="container">
-
+		<h2>Nombre total de livres :
+			{{ totalLivres }}</h2>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -34,9 +35,16 @@
 						</td>
 					</tr>
 				{% endfor %}
-				{{ test1 }}
 			</tbody>
 		</table>
+		<h2>La liste des livres dont la première lettre commence par …</h2>
+		<ul>
+			{% for livre in livres %}
+				<li>{{ livre.titre }}
+					par
+					{{ livre.auteur }}</li>
+			{% endfor %}
+		</ul>
 	</div>
 
 {% endblock %}
