@@ -8,11 +8,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Livre>
- *
- * @method Livre|null find($id, $lockMode = null, $lockVersion = null)
- * @method Livre|null findOneBy(array $criteria, array $orderBy = null)
- * @method Livre[]    findAll()
- * @method Livre[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class LivreRepository extends ServiceEntityRepository
 {
@@ -21,28 +16,31 @@ class LivreRepository extends ServiceEntityRepository
         parent::__construct($registry, Livre::class);
     }
 
-//    /**
-//     * @return Livre[] Returns an array of Livre objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('l')
-//            ->andWhere('l.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('l.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * Trouver les livres dont le titre commence par une lettre spécifique.
+     *
+     * @param string $lettre La lettre par laquelle le titre doit commencer.
+     * @return Livre[] Renvoie un tableau d'objets Livre.
+     */
+    public function trouverParPremiereLettre($lettre): array
+    {
+        return $this->createQueryBuilder('l')
+            ->where('l.titre LIKE :lettre')
+            ->setParameter('lettre', $lettre.'%')
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Livre
-//    {
-//        return $this->createQueryBuilder('l')
-//            ->andWhere('l.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * Compter le nombre total de livres présents en base.
+     *
+     * @return int Le nombre total de livres.
+     */
+    public function compterTousLesLivres(): int
+    {
+        return $this->createQueryBuilder('l')
+            ->select('COUNT(l.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

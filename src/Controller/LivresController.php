@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Livre;
+use App\Repository\LivreRepository;
 
 class LivresController extends AbstractController
 {
@@ -15,9 +16,9 @@ class LivresController extends AbstractController
     {
         // Récupère les livres dans la BDD
         $livres = $entityManager->getRepository(Livre::class)->findAll();
-        
+
         // Gestion d'erreur
-        if(!$livres) {
+        if (!$livres) {
             throw $this->createNotFoundException("Aucun livre n'est enregistré !");
         }
 
@@ -34,15 +35,24 @@ class LivresController extends AbstractController
         // Cherche les marques pages en bdd selon l'ID de l'article
         $details = $entityManager->getRepository(Livre::class)->find($id);
 
-        if(!$details) {
+        if (!$details) {
             throw $this->createNotFoundException(
-                "Aucun livre avec l'id ". $id
+                "Aucun livre avec l'id " . $id
             );
         }
 
         // Ajoute les valeurs dans la Vue
         return $this->render('livres/details.html.twig', [
             'details' => $details,
+        ]);
+    }
+
+    public function listerLivresParLettre(LivreRepository $livreRepository, $lettre): Response
+    {
+        $livres = $livreRepository->trouverParPremiereLettre($lettre);
+
+        return $this->render('livres/liste.html.twig', [
+            'test1' => $livres,
         ]);
     }
 }
