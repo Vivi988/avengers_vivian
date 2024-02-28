@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des auteurs
+{% endblock %}
+{% block titrenavbar %}
+	<h1>Liste complète des auteurs</h1>
+{% endblock %}
+{% block body %}
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid;
+		}
+	</style>
+
+	<div class="container">
+		<h2>Nombre total d'auteurs :
+			{{ totalLivres }}</h2>
+		{# <h2>Ajouter un livre :</h2>
+		<div>{{ form(mon_formulaire) }}</div> #}
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Nom</th>
+					<th scope="col">Prénom</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for a in auteurs %}
+					<tr>
+						<td>{{ a.getNom() }}</td>
+						<td>{{ a.getPrenom() }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+{% block footer %}Liste des Auteurs
+{% endblock %}

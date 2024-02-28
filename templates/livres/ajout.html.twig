@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout du livre
+{% endblock %}
+{% block titrenavbar %}
+	<h1>Ajout du livre</h1>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h2>Complétez le formulaire
+		</h2>
+		{{ form(mon_formulaire_livres) }}
+		</div>
+{% endblock %}
+
+{% block footer %}Livre ajouté ?
+{% endblock %}
