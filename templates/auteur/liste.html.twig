@@ -2,9 +2,6 @@
 
 {% block title %}Liste des auteurs
 {% endblock %}
-{% block titrenavbar %}
-	<h1>Liste complète des auteurs</h1>
-{% endblock %}
 {% block body %}
 	<style>
 		table,
@@ -16,9 +13,7 @@
 
 	<div class="container">
 		<h2>Nombre total d'auteurs :
-			{{ totalLivres }}</h2>
-		{# <h2>Ajouter un livre :</h2>
-		<div>{{ form(mon_formulaire) }}</div> #}
+			{{ totalAuteurs }}</h2>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>

@@ -26,15 +26,15 @@ class AuteurController extends AbstractController
     public function getAll(AuteurRepository $auteurRepository): Response
     {
         $auteurs = $auteurRepository->findAll();
-        $totalAuteur = $auteurRepository->compterTousLesLivres();
+        $totalAuteur = $auteurRepository->compterTousLesAuteurs();
 
         if (!$auteurs) {
             throw $this->createNotFoundException("Aucun auteur n'est enregistré !");
         }
 
-        return $this->render('livres/liste.html.twig', [
-            'livres' => $auteurs,
-            'totalLivres' => $totalAuteur,
+        return $this->render('auteur/liste.html.twig', [
+            'auteurs' => $auteurs,
+            'totalAuteurs' => $totalAuteur,
         ]);
     }
 
@@ -57,7 +57,7 @@ class AuteurController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($auteur);
             $entityManager->flush();
-            return $this->redirectToRoute('aueteur_succes');
+            return $this->redirectToRoute('auteur_succes');
         }
 
         return $this->render('auteur/ajout.html.twig',[
@@ -67,9 +67,7 @@ class AuteurController extends AbstractController
 
     #[Route('/auteur_succes', name: 'auteur_succes')]
     public function succes(){
-        $ceb = "okok";
         return $this->render('auteur/succes.html.twig',[
-            "ceb" => $ceb,
         ]);
     }
 }

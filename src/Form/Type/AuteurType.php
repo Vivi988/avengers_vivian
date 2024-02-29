@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Auteur;
 
-class LivreType extends AbstractType
+class AuteurType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -19,7 +19,7 @@ class LivreType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('date de naissance', DateType::class)
+            ->add('date_de_naissance', DateType::class)
             // ->add('auteur', TextType::class)
             ->add('valider', SubmitType::class);
     }
