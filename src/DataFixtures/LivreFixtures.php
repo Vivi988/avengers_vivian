@@ -7,7 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use App\Entity\Livre;
 use DateTime;
 
-class LivreFIxtures extends Fixture
+class LivreFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
