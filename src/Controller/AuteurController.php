@@ -38,36 +38,58 @@ class AuteurController extends AbstractController
         ]);
     }
 
-    #[Route("/auteur/ajout", name : "auteur_ajout")]
-    public function ajout(Request $request, ManagerRegistry $doctrine )
+    #[Route("/auteur/ajout", name: "auteur_ajout")]
+    public function ajout(Request $request, ManagerRegistry $doctrine)
     {
         // Création d’un objet que l'on assignera au formulaire
         $auteur = new Auteur();
 
         // $livre->setTitre("Mon titre pré-rempli !"); // Pour pré-renseigner des valeurs
         $form = $this->createForm(AuteurType::class, $auteur);
-        
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() : pour récupérer les données
-            // Les données sont déjà stockées dans la variable d’origine
-            // $livre = $form->getData();
-            // ... Effectuer le/les traitements(s) à réaliser
-            // Par exemple :
             $entityManager = $doctrine->getManager();
             $entityManager->persist($auteur);
             $entityManager->flush();
             return $this->redirectToRoute('auteur_succes');
         }
 
-        return $this->render('auteur/ajout.html.twig',[
+        return $this->render('auteur/ajout.html.twig', [
             'mon_formulaire_auteurs' => $form,
         ]);
     }
 
     #[Route('/auteur_succes', name: 'auteur_succes')]
-    public function succes(){
-        return $this->render('auteur/succes.html.twig',[
+    public function succes()
+    {
+        return $this->render('auteur/succes.html.twig', []);
+    }
+
+    #[Route("/modifier/auteur/{id}", name: "auteur_modifier")]
+    public function modifier(int $id, Request $request, AuteurRepository $auteurRepository, ManagerRegistry $doctrine): Response
+    {
+
+        $details = $auteurRepository->find($id);
+
+        if (!$details) {
+            throw $this->createNotFoundException("Aucun auteur avec l'id $id");
+        }
+
+        $form = $this->createForm(AuteurType::class, $details);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($details);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('auteur_succes');
+        }
+
+        return $this->render('auteur/modif.html.twig', [
+            'mon_formulaire_auteurs_modif' => $form->createView(),
+            'details' => $details,
         ]);
     }
 }

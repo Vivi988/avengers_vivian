@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de l'auteur {{ details.id }}{% endblock %}
+
+{% block body %}
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+    </style>
+    <div class="container">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Libellé</th>
+                    <th scope="col">Valeurs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Prenom</td>
+                    <td>{{ details.prenom }}</td> 
+                </tr>
+                <tr>
+                    <td>Nom</td>
+                    <td>{{ details.nom }}</td>
+                </tr>
+                <tr>
+                    <td>Date de création</td>
+                    <td>{{ details.dateDeNaissance|date('Y-m-d H:i:s') }}</td> 
+                </tr>
+            </tbody>
+        </table>
+        {{ form(mon_formulaire_auteurs_modif) }}
+        <a href="{{ path('app_auteur') }}">Retourner à la liste des Auteurs</a> 
+    </div>
+{% endblock %}
+
+{% block footer %}Détails de l'auteur : "{{ details.prenom }} {{ details.nom }}"{% endblock %}

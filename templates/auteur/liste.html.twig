@@ -19,6 +19,7 @@
 				<tr>
 					<th scope="col">Nom</th>
 					<th scope="col">Prénom</th>
+					<th scope="col">Détails</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,6 +27,7 @@
 					<tr>
 						<td>{{ a.getNom() }}</td>
 						<td>{{ a.getPrenom() }}</td>
+						<td><a href="/modifier/auteur/{{ a.getid() }}">Details</a></td>
 					</tr>
 				{% endfor %}
 			</tbody>
