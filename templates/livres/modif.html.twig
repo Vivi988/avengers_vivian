@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du livre {{ details_modif.id }}{% endblock %}
+
+{% block body %}
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+    </style>
+    <div class="container">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Libellé</th>
+                    <th scope="col">Valeurs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Id</td>
+                    <td>{{ details_modif.id }}</td> 
+                </tr>
+                <tr>
+                    <td>Titre</td>
+                    <td>{{ details_modif.titre }}</td>
+                </tr>
+                <tr>
+                    <td>Date de création</td>
+                    <td>{{ details_modif.getAnnee|date('Y-m-d H:i:s') }}</td> 
+                </tr>
+            </tbody>
+        </table>
+        {{ form(mon_formulaire_livres_modif) }}
+        <a href="{{ path('app_livres') }}">Retourner à la liste des Auteurs</a> 
+    </div>
+{% endblock %}
+
+{% block footer %}Détails du livre : "{{ details_modif.titre }}"{% endblock %}

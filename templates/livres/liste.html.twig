@@ -22,6 +22,7 @@
 					<th scope="col">Titre</th>
 					<th scope="col">Auteur</th>
 					<th scope="col">Détails</th>
+					<th scope="col">Modifier</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -31,6 +32,9 @@
 						<td>{{ l.getAuteur() }}</td>
 						<td>
 							<a href="/consulter/livre/{{ l.getId() }}">Détails</a>
+						</td>
+						<td>
+							<a href="/modifier/livre/{{ l.getId() }}">Modifier</a>
 						</td>
 					</tr>
 				{% endfor %}

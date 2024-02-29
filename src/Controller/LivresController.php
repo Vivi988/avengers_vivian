@@ -66,8 +66,8 @@ class LivresController extends AbstractController
         ]);
     }
 
-    #[Route("/livre/ajout", name : "livre_ajout")]
-    public function ajout(Request $request, ManagerRegistry $doctrine )
+    #[Route("/livre/ajout", name: "livre_ajout")]
+    public function ajout(Request $request, ManagerRegistry $doctrine)
     {
         // Création d’un objet que l'on assignera au formulaire
         $livre = new Livre();
@@ -87,17 +87,43 @@ class LivresController extends AbstractController
             return $this->redirectToRoute('livre_succes');
         }
 
-        return $this->render('livres/ajout.html.twig',[
+        return $this->render('livres/ajout.html.twig', [
             'mon_formulaire_livres' => $form,
         ]);
     }
 
     #[Route('/livre_succes', name: 'livre_succes')]
-    public function succes(){
-        $ceb = "okok";
-        return $this->render('livres/succes.html.twig',[
+    public function succes()
+    {
+        $ceb = "modification okok";
+        return $this->render('livres/succes.html.twig', [
             "ceb" => $ceb,
         ]);
     }
-    
+
+    #[Route("/modifier/livre/{id}", name: "livre_modifier")]
+    public function modifier(int $id, Request $request, LivreRepository $livreRepository, ManagerRegistry $doctrine): Response
+    {
+        $details = $livreRepository->find($id);
+
+        if (!$details) {
+            throw $this->createNotFoundException("Aucun livre avec l'id $id");
+        }
+
+        $form = $this->createForm(LivreType::class, $details);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($details);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('livre_succes');
+        }
+
+        return $this->render('livres/modif.html.twig', [
+            'mon_formulaire_livres_modif' => $form->createView(),
+            'details_modif' => $details,
+        ]);
+    }
 }

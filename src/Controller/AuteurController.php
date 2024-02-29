@@ -69,7 +69,6 @@ class AuteurController extends AbstractController
     #[Route("/modifier/auteur/{id}", name: "auteur_modifier")]
     public function modifier(int $id, Request $request, AuteurRepository $auteurRepository, ManagerRegistry $doctrine): Response
     {
-
         $details = $auteurRepository->find($id);
 
         if (!$details) {
