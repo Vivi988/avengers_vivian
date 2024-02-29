@@ -15,6 +15,7 @@ class AuteurFixture extends Fixture
             $auteur = new Auteur();
             $auteur->setNom('Toto' . $i);
             $auteur->setPrenom('Doe' . $i);
+            $auteur->setDatedenaissance(new \DateTime(mt_rand(1975, 1990)));
             $manager->persist($auteur);
         }
 
