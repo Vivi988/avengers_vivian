@@ -45,4 +45,17 @@ class AdresseRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    /**
+     * Compter le nombre total d'adresses présentes en base.
+     *
+     * @return int Le nombre total d'adresses.
+     */
+    public function compterToutesLesAdresses(): int
+    {
+        return $this->createQueryBuilder('l')
+            ->select('COUNT(l.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

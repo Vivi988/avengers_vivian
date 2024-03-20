@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des auteurs
+{% endblock %}
+{% block body %}
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid;
+		}
+	</style>
+
+	<div class="container">
+		<h2>Nombre total d'adresses :
+			{{ totalAdresse }}</h2>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Adresse</th>
+					<th scope="col">Commune</th>
+					<th scope="col">Détails</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for a in adresse %}
+					<tr>
+						<td>{{ a.getAdresse() }}</td>
+						<td>{{ a.getCommune() }}</td>
+						{# <td><a href="/modifier/auteur/{{ a.getid() }}">Details</a></td> #}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+{% block footer %}Liste des Auteurs
+{% endblock %}
