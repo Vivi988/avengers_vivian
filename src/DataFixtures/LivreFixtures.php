@@ -18,7 +18,7 @@ class LivreFixtures extends Fixture
         for ($i = 0; $i < 15; $i++) {
             $livre = new Livre();
             $livre->setTitre('Livre ' . $i);
-            $livre->setAuteur('Auteur ' . $i);
+            // $livre->setAuteur('Auteur ' . $i);
             $livre->setAnnee(new \DateTime(mt_rand(1975, 2020)));
             $manager->persist($livre);
         }
