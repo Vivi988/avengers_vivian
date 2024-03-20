@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Livre;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Auteur;
 
 class LivreType extends AbstractType
 {
@@ -19,7 +21,13 @@ class LivreType extends AbstractType
         $builder
             ->add('titre', TextType::class)
             ->add('annee', DateType::class)
-            // ->add('auteur', TextType::class)
+            ->add('auteur', EntityType::class, [
+                'class' => Auteur::class,
+                'choice_label' => function(Auteur $auteur) {
+                    return $auteur->getNom() . ' ' . $auteur->getPrenom(); // Ou toute autre propriété ou méthode que vous souhaitez utiliser pour l'affichage
+                },
+                'placeholder' => 'Choisir un auteur', // Ajoute une option vide au début de la liste déroulante
+            ])            
             ->add('valider', SubmitType::class);
     }
 

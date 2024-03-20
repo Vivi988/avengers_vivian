@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\AuteurRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: AuteurRepository::class)]
 class Auteur
@@ -22,6 +24,7 @@ class Auteur
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $datedenaissance = null;
+
 
     public function getId(): ?int
     {
@@ -62,5 +65,10 @@ class Auteur
         $this->datedenaissance = $datedenaissance;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->nom . ' ' . $this->prenom;
     }
 }
