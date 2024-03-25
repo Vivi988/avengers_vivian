@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\EmployeRepository;
+use App\Entity\Adresse;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EmployeRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EmployeRepository::class)]
 class Employe
@@ -21,6 +24,26 @@ class Employe
 
     #[ORM\Column(length: 150, nullable: true)]
     private ?string $Poste = null;
+
+    // #[ORM\OneToOne(targetEntity: Adresse::class, mappedBy: "employe", cascade: ["persist"])]
+    // private ?Adresse $adresse = null;
+
+    #[ORM\OneToOne(inversedBy: 'employe')]
+    #[Assert\Type(Adresse::class)]
+    #[Assert\Valid]
+    private ?Adresse $adresse = null;
+
+    public function getAdresse(): ?Adresse
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?Adresse $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -62,4 +85,5 @@ class Employe
 
         return $this;
     }
+
 }

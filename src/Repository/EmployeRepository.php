@@ -45,4 +45,16 @@ class EmployeRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    /**
+     * Compter le nombre total d'employés présents en base.
+     *
+     * @return int Le nombre total d'employé.
+     */
+    public function compterTousLesEmployes(): int
+    {
+        return $this->createQueryBuilder('l')
+            ->select('COUNT(l.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

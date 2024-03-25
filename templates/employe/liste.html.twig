@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des employés
+{% endblock %}
+{% block body %}
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid;
+		}
+	</style>
+
+	<div class="container">
+		<h2>Nombre total d'employés :
+			{{ totalEmploye }}</h2>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Prénom</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Poste</th>
+					<th scope="col">Adresse</th>
+					<th scope="col">Détails</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for e in employe %}
+					<tr>
+						<td>{{ e.getPrenom() }}</td>
+						<td>{{ e.getNom() }}</td>
+						<td>{{ e.getPoste() }}</td>
+						<td>{{ e.getAdresse() }}</td>
+						{# <td><a href="/modifier/employe/{{ a.getid() }}">Details</a></td> #}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+{% block footer %}Liste des Employés
+{% endblock %}

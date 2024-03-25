@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des auteurs
+{% block title %}Liste des adresses
 {% endblock %}
 {% block body %}
 	<style>
@@ -27,7 +27,7 @@
 					<tr>
 						<td>{{ a.getAdresse() }}</td>
 						<td>{{ a.getCommune() }}</td>
-						{# <td><a href="/modifier/auteur/{{ a.getid() }}">Details</a></td> #}
+						{# <td><a href="/modifier/adresse/{{ a.getid() }}">Details</a></td> #}
 					</tr>
 				{% endfor %}
 			</tbody>
@@ -35,5 +35,5 @@
 	</div>
 
 {% endblock %}
-{% block footer %}Liste des Auteurs
+{% block footer %}Liste des Adresses
 {% endblock %}
