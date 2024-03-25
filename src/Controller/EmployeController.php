@@ -17,6 +17,7 @@ class EmployeController extends AbstractController
     //     ]);
     // }
 
+    // Lister les employés
     #[Route('/employe', name: 'app_employe')]
     public function getAll(EmployeRepository $employeRepository): Response
     {
@@ -32,4 +33,22 @@ class EmployeController extends AbstractController
             'totalEmploye' => $totalEmploye,
         ]);
     }
+
+    /**
+     * Affiche les détails d'un employé spécifique par son ID.
+     */
+    #[Route('/consulter/employe/{id}', requirements: ["id" => "\d+"])]
+    public function consulterDetails(int $id, EmployeRepository $EmployeRepository): Response
+    {
+        $details = $EmployeRepository->find($id);
+
+        if (!$details) {
+            throw $this->createNotFoundException("Aucun employé avec l'id $id");
+        }
+
+        return $this->render('employe/details.html.twig', [
+            'details' => $details,
+        ]);
+    }
+
 }

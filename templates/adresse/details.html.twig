@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de l'adresse n°
+	{{ details.id }}
+{% endblock %}
+{% block body %}
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid;
+		}
+	</style>
+	<div class="container">
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Libellé</th>
+					<th scope="col">Valeurs</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Id</td>
+					<td>{{ details.id }}</td>
+				</tr>
+				<tr>
+					<td>Adresse</td>
+					<td>{{ details.getAdresse }}</td>
+				</tr>
+				<tr>
+					<td>Commune</td>
+					<td>{{ details.getCommune() }}</td>
+				</tr>
+				<tr>
+					<td>Texte</td>
+					<td>{{ details.getText }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/adresse">Retourner à la liste des adresses</a>
+	</div>
+
+{% endblock %}
+{% block footer %}Détails de l'adresse : "{{ details.getid()}}"
+{% endblock %}
