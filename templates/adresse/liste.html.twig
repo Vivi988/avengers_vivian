@@ -14,6 +14,7 @@
 	<div class="container">
 		<h2>Nombre total d'adresses :
 			{{ totalAdresse }}</h2>
+		<a href="/adresse/ajout">Ajouter une adresse</a>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -27,7 +28,9 @@
 					<tr>
 						<td>{{ a.getAdresse() }}</td>
 						<td>{{ a.getCommune() }}</td>
-						<td><a href="/consulter/adresse/{{ a.getid() }}">Details</a></td>
+						<td>
+							<a href="/consulter/adresse/{{ a.getid() }}">Details</a>
+						</td>
 					</tr>
 				{% endfor %}
 			</tbody>

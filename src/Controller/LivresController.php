@@ -66,7 +66,7 @@ class LivresController extends AbstractController
         ]);
     }
 
-    #[Route("/livre/ajout", name: "livre_ajout")]
+    #[Route("/livres/ajout", name: "livre_ajout")]
     public function ajout(Request $request, ManagerRegistry $doctrine)
     {
         // Création d’un objet que l'on assignera au formulaire
