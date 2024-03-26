@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de l'employé {{ details_modif.id }}{% endblock %}
+
+{% block body %}
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid;
+        }
+    </style>
+    <div class="container">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Libellé</th>
+                    <th scope="col">Valeurs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Prénom</td>
+                    <td>{{ details_modif.getPrenom() }}</td> 
+                </tr>
+                <tr>
+                    <td>Nom</td>
+                    <td>{{ details_modif.getNom() }}</td>
+                </tr>
+                <tr>
+                    <td>Poste</td>
+                    <td>{{ details_modif.getPoste() }}</td> 
+                </tr>
+                <tr>
+                    <td>Adresse</td>
+                    <td>{{ details_modif.getAdresse() }}</td> 
+                </tr>
+            </tbody>
+        </table>
+        {{ form(mon_formulaire_employes_modif) }}
+        <a href="{{ path('app_employe') }}">Retourner à la liste des Auteurs</a> 
+    </div>
+{% endblock %}
+
+{% block footer %}Détails de l'employé : "{{ details_modif.getPrenom() }}"{% endblock %}

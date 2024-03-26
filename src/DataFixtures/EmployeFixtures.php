@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Employe;
+use App\Entity\Adresse;
 
 class EmployeFixtures extends Fixture
 {

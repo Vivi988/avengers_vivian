@@ -14,6 +14,7 @@
 	<div class="container">
 		<h2>Nombre total d'employés :
 			{{ totalEmploye }}</h2>
+		<a href="/employe/ajout">Ajouter un employé</a>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -22,6 +23,7 @@
 					<th scope="col">Poste</th>
 					<th scope="col">Adresse</th>
 					<th scope="col">Détails</th>
+					<th scope="col">Modifier</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,6 +34,7 @@
 						<td>{{ e.getPoste() }}</td>
 						<td>{{ e.getAdresse() }}</td>
 						<td><a href="/consulter/employe/{{ e.getid() }}">Details</a></td>
+						<td><a href="/modifier/employe/{{ e.getid() }}">Modifier</a></td>
 					</tr>
 				{% endfor %}
 			</tbody>

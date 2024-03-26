@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\AdresseRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Employe;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 #[ORM\Entity(repositoryClass: AdresseRepository::class)]
 class Adresse
@@ -22,6 +24,22 @@ class Adresse
 
     #[ORM\Column(length: 255)]
     private ?string $text = null;
+
+    #[ORM\OneToOne(targetEntity: Employe::class, inversedBy: "adresse", cascade: ["persist"])]
+    // #[ORM\JoinColumn(nullable: false)]
+    private ?Employe $employe = null;
+
+    public function getEmploye(): ?Employe
+    {
+        return $this->employe;
+    }
+
+    public function setEmploye(?Employe $employe): self
+    {
+        $this->employe = $employe;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
