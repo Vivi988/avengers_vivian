@@ -16,6 +16,10 @@ class EmployeFixtures extends Fixture
             $employe->setNom("Doe$i");
             $employe->setPrenom("John$i");
             $employe->setPoste("Poste$i");
+
+            $adresse=new Adresse();
+            $adresse->setAdresse($adresse . "Adresse$i");
+
             $manager->persist($employe);
         }
 

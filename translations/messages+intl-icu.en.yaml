@@ -1,0 +1,14 @@
+texte.traduire : Text to translate
+dit.bonjour : 'Hello {prenom} ! '
+nb_livres : >-
+    {nb, plural,
+        =0      {No book}
+        one     {There is one book}
+        other   {there are # books}
+    }
+amis : >-
+    {genre, select, 
+        feminin {{prenom} is my female friend  }
+        masculin {{prenom} is my male friend }
+        other {{prenom} are my friends}
+    }

@@ -26,7 +26,7 @@ class Adresse
     private ?string $text = null;
 
     #[ORM\OneToOne(targetEntity: Employe::class, inversedBy: "adresse", cascade: ["persist"])]
-    // #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Employe $employe = null;
 
     public function getEmploye(): ?Employe
